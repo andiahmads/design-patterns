@@ -1,12 +1,11 @@
 package abstract_factory
 
-//buat produk
-type Pricey interface {
+type Harga interface {
 	Price() float64
 }
 
-type Chair interface {
-	Pricey
+type Kursi interface {
+	Harga
 	IsIoTEnabled() bool
 	IsSoft() bool
 }
@@ -15,8 +14,8 @@ type Dimension struct {
 	Length, Width, Height int
 }
 
-type CoffeeTable interface {
-	Pricey
+type Meja interface {
+	Harga
 	Size() Dimension
 	IsFoldable() bool
 }
@@ -29,17 +28,12 @@ const (
 )
 
 type Sofa interface {
-	Pricey
+	Harga
 	Style() SofaStyle
 }
 
-//================================================================//
-
-//buat abstract_factory
 type FurnitureFactory interface {
-	CreateChair() Chair
-	CreateCoffeeTable() CoffeeTable
-	CreateSofa() Sofa
+	BuatKursi() Kursi
+	BuatMeja() Meja
+	BuatSofa() Sofa
 }
-
-//BUAT produk kursi
